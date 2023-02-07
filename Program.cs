@@ -3,11 +3,13 @@ var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
 
+app.MapGet("/test", ()=> "Hello Test Route");
+
 
 app.MapGet("/checkDir", () => "Root Directory: " + Directory.GetCurrentDirectory());
 
 app.MapGet("/deleteTemp", () => {
-    string path = Directory.GetCurrentDirectory() + "\\temp";
+    string path = Path.Combine(Directory.GetCurrentDirectory(),"temp");
     try
     {
         var dir = new DirectoryInfo(@path);
@@ -19,7 +21,6 @@ app.MapGet("/deleteTemp", () => {
     }
     return "Temp File Deleted";
 });
-
 app.MapGet("/createTemp", () => {
     string path = Directory.GetCurrentDirectory();
     try
@@ -52,7 +53,7 @@ app.MapGet("/createTemp", () => {
 });
 
 app.MapGet("/checkTemp", () => {
-    string path = Directory.GetCurrentDirectory() + "\\temp";
+    string path = Path.Combine(Directory.GetCurrentDirectory(),"temp");
     try
     {
         var dir = new DirectoryInfo(@path);
