@@ -6,7 +6,7 @@ app.MapGet("/", () => "Hello World!");
 app.MapGet("/checkDir", () => "Root Directory: " + Directory.GetCurrentDirectory());
 
 app.MapGet("/deleteTemp", () => {
-    string path = "temp";
+    string path = "healthcheck";
     try
     {
         var dir = new DirectoryInfo(@path);
@@ -19,10 +19,10 @@ app.MapGet("/deleteTemp", () => {
     return "Temp File Deleted";
 });
 app.MapGet("/createTemp", () => {
-    string pathString = "temp"; 
+    string pathString = "healthcheck"; 
     try
     {
-        //string pathString = System.IO.Path.Combine("temp"); 
+        //string pathString = System.IO.Path.Combine("healthcheck"); 
         System.IO.Directory.CreateDirectory(pathString);
         string fileName = "healthy";
         pathString = System.IO.Path.Combine(pathString, fileName);
@@ -51,7 +51,7 @@ app.MapGet("/createTemp", () => {
 
 
 app.MapGet("/checkTemp", () => {
-    string path = "temp";
+    string path = "healthcheck";
     try
     {
         var dir = new DirectoryInfo(@path);
